@@ -14,7 +14,7 @@ class Settings(BaseSettings):
         :param str zone_id: The zone id (if needed) for the DNS zone to manage
     """
     domain: str = Field('example.com', env='DYN_DOMAIN')
-    record: str = Field('ddns', env='DYN_RECORD')
+    host: str = Field('ddns', env='DYN_HOST')
     dns_provider: str = Field('https://api.cloudflare.com', env="DNS_PROVIDER")
     api_key: str = Field('fake_key', env='API_KEY')
     zone_id: str = Field('fake_zone_id', env="ZONE_ID")
