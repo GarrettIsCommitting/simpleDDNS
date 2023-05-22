@@ -2,7 +2,7 @@ FROM python:latest
 LABEL authors="Garrett Allen"
 
 WORKDIR /app
-COPY . .
+COPY app/. .
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
