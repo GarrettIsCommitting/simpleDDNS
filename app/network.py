@@ -1,11 +1,12 @@
 # app/network.py
 import dns.resolver
 from requests import get
-from app.config import settings
+from config import settings
 
 
 def get_public_ipv4() -> str:
     """Get the public IPv4 address for the local network
+    Uses the ipify.org API, others could be used if desired
     :returns
         public_ipv4(str): IPv4 address as a string
     """
