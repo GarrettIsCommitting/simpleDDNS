@@ -19,5 +19,5 @@ jobs:
     - run: echo "🖥️ The workflow is now ready to test your code on the runner."
     - run: ls ${{ github.workspace }}
     - run: cp -ra app/* .
-    - run: docker build . --file app/Dockerfile --tag garrettiscommitting/simpleDDNS:$(date +%s)
+    - run: docker build . --file app/Dockerfile --tag garrettiscommitting/simpleddns:$(date +%s)
     - run: docker push ghcr.io/GarrettIsCommitting/simpleDDNS:latest
