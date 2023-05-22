@@ -4,7 +4,7 @@ import logging
 from sys import stdout
 
 # Define logger
-logger = logging.getLogger('mylogger')
+logger = logging.getLogger('simpleDDNS')
 
 logger.setLevel(logging.DEBUG) # set logger level
 logFormatter = logging.Formatter\
