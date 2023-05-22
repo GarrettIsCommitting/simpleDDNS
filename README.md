@@ -1,6 +1,8 @@
 # simpleDDNS
 A simple DDNS implementation in Python
 
+[![simpleDDNS Docker Image CI](https://github.com/GarrettIsCommitting/simpleDDNS/actions/workflows/docker-image.yml/badge.svg?branch=main)](https://github.com/GarrettIsCommitting/simpleDDNS/actions/workflows/docker-image.yml)
+
 ### Caveats
 This is primarily written for educational purposes 
 and should not be used in production.
