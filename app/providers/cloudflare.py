@@ -1,11 +1,11 @@
 # app/providers/cloudflare.py
-
+from std_logging import logger
 import CloudFlare
 
 from config import settings
 
 if settings.dns_provider != "https://api.cloudflare.com":
-    print("Trying to use the wrong DNS provider, exiting")
+    logger.exception("Trying to use the wrong DNS provider, exiting")
     raise SystemExit
 
 
@@ -18,11 +18,11 @@ def get_record_id(
     try:
         records = access.zones.dns_records.get(zone_id)
     except CloudFlare.cloudflare.CloudFlareAPIError:
+        logger.warning("Could not connect to Cloudflare")
         raise ConnectionError
     for record in records:
-        print(record)
         if record['name'] == host + '.' + domain:
-            print("Found {}".format(record['id']))
+            logger.debug("Found {} with id of {}".format(record['name'], record['id']))
             return record['id']
     return None
 
@@ -40,11 +40,13 @@ def update_or_create_record(
         try:
             access.zones.dns_records.patch(zone_id, record_id, data=dns_record)
         except CloudFlare.cloudflare.CloudFlareAPIError:
+            logger.warning("Could not connect to Cloudflare")
             raise ConnectionError
     else:
         try:
             access.zones.dns_records.post(zone_id, data=dns_record)
         except CloudFlare.cloudflare.CloudFlareAPIError:
+            logger.warning("Could not connect to Cloudflare")
             raise ConnectionError
     return
 

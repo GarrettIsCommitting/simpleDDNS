@@ -15,3 +15,7 @@ current public IPv4 address of the network where this runs.
 ### Deployment
 For ease of use this is primarily intended to run inside
 a docker container, but local configuration will be possible as well.
+
+#### Docker
+1. Replace the dummy values in `.env` with real values
+2. At the root of the project run `docker compose up -d`

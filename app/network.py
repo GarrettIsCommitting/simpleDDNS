@@ -1,7 +1,8 @@
 # app/network.py
-import dns.resolver
+import socket
 from requests import get
 from config import settings
+from std_logging import logger
 
 
 def get_public_ipv4() -> str:
@@ -11,6 +12,7 @@ def get_public_ipv4() -> str:
         public_ipv4(str): IPv4 address as a string
     """
     public_ipv4 = get("https://api.ipify.org").text
+    logger.debug("Found public IP of {}".format(public_ipv4))
     return public_ipv4
 
 
@@ -30,11 +32,8 @@ def does_record_match(hostname:str = get_hostname(), public_ipv4: str = get_publ
     :param public_ipv4: the IPv4 to compare against
     :return: bool
     """
-    try:
-        record_ipv4 = dns.resolver.resolve(hostname)
-    except dns.resolver.NXDOMAIN:
-        print("No record found for {}".format(hostname))
-        return False
+    record_ipv4 = socket.gethostbyname(hostname)
+    logger.debug("Resolved IP on record to {}".format(record_ipv4))
     if record_ipv4 == public_ipv4:
         return True
     return False

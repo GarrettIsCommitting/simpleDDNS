@@ -1,0 +1,9 @@
+# docker-compose.yaml
+version: "1.0"
+services:
+  ddns:
+    env_file:
+      - .env
+    build:
+     context: app
+    restart: on-failure
