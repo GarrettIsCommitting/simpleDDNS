@@ -1,4 +1,4 @@
-name: simpleDDNS Docker Image CI
+name: simpleDDNS Docker Compose CI
 run-name: ${{ github.actor }} is building simpleDDNS
 on:
   push:
