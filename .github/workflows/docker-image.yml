@@ -20,4 +20,4 @@ jobs:
     - run: ls ${{ github.workspace }}
     - run: cp -ra app/* .
     - run: docker build . --file app/Dockerfile --tag ghcr.io/garrettiscommitting/simpleddns:$(date +%s)
-    - run: docker push ghcr.io/garrettiscommitting/simpleddns:latest
+    - run: docker push ghcr.io/garrettiscommitting/simpleddns:$(date +%s)
